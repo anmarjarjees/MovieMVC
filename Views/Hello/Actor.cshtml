@@ -1,0 +1,16 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+    The code below was copied from the link above
+*@
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Actor Greetings</h2>
+
+<p>Hello from our View Template "Actor.cshtml"!</p>
+@for (int i = 0; i < (int)(ViewData["Count"] ?? ""); i++)
+{
+    <li>@ViewData["Greeting"]</li>
+}

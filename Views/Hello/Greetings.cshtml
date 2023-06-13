@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+    Modify the contents below
+*@
+
+    @*
+    To recap:    
+    as we do with PHP by adding <?php ?> for any php code,
+    in razor pages, we use @{ and } for C# code :-) 
+    *@
+
+@{
+    ViewData["Title"] = "Greeting our client!";
+}
+
+<h2>Welcome</h2>
+
+  @* Remember that we passed:
+    > ViewData["Greeting"]
+    > ViewData["Count"]*@
+<ul>
+    @{
+        /*
+        IMPORTANT NOTE:
+        ViewData[] => represents a dictionary for view data, it's not an integer value
+        so we cannot use it as it is in our loop condition,
+        we need to cast it to int:
+        - Notice the code is simply written as:
+        the loop condition => i <(int)ViewData["Count"])
+
+        - But due to C# warning since .NET7 about the null string value, the new code:
+        the loop condition => i < (int)(ViewData["Count"] ?? "")
+        */
+        @for (int i = 0; i < (int)(ViewData["Count"] ?? ""); i++)
+        {
+            <li>@ViewData["Greeting"]</li>
+        }
+    }
+</ul>
