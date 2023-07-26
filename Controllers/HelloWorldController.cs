@@ -7,18 +7,22 @@ namespace MovieMVC.Controllers
 {
     public class HelloWorldController : Controller
     {
-        // Commenting the default method for now:
-        /*       public IActionResult Index()
+        // Commenting the default method (code) for now:
+        /*       
+         public IActionResult Index()
                {
                    return View();
-               }*/
+               }
+        */
 
         /*
         NOTE:
         Every public method in a controller is callable as an HTTP endpoint. 
 
         Adding our custom Controller Methods
-        Notice that the default one is Index()
+        Notice that:
+        - The default one is Index()
+        - Every public method in a controller is callable as an HTTP endpoint. 
 
 
          To access/run/trigger any of the Controller methods:
@@ -32,7 +36,7 @@ namespace MovieMVC.Controllers
         The first comment states this is an HTTP GET method that's invoked 
         by appending /HelloWorld/ to the base URL.
         */
-        
+
         // URL/HelloWorld/
         // Notice no need to specify the Index as it's set by default if no value is passed
         public string Index()
