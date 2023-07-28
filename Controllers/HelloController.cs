@@ -23,10 +23,20 @@ namespace MovieMVC.Controllers
         public IActionResult Index()
         {
             /*
-            Will return a razor page view to the browser:
+            The statement "return View()" specified that the method should use a view template file 
+            to render a response to the browser.
+
+            It will return a razor page view to the browser:
             */
             return View();
+            /*
+            A view template file name wasn't specified, 
+            so MVC defaulted to using the default view file. 
+            When the view file name isn't specified, the default view is returned. 
+            The default view has the same name as the action method, Index in this example. 
+            */
         }
+
 
         /*
         The method below to be explained after the first intro
@@ -36,28 +46,35 @@ namespace MovieMVC.Controllers
 
 
         /*
-        Adding one more method "Greetings" with the same signature (different return type)
-        to practice passing the parameters but with different body contents: 
+        Adding one more method "Greeting" to practice passing the parameters but with different body contents: 
 
-        Remember that the method name "Greetings" must be the same 
-        as the file name "Greetings.cshtml"
+        Remember that the method name "Greeting" must be the same 
+        as its corresponding view file name "Greeting.cshtml"
 
         So we can access it: 
-        > https://localhost:7002/hello/greetings
+        > https://localhost:7002/hello/greeting
         OR with passing the needed parameters:
-        > https://localhost:7002/hello/greetings?name=MartinSmith&numTimes=5
+        > https://localhost:7002/hello/greeting?name=MartinSmith&numTimes=5
         OR: for adding spaces
-        > https://localhost:7002/hello/greetings?name=Martin+Smith&numTimes=5
+        > https://localhost:7002/hello/greeting?name=Martin+Smith&numTimes=5
         Or: for adding space also:
-        > https://localhost:7002/hello/greetings?name=Martin%20Smith&numTimes=5
+        > https://localhost:7002/hello/greeting?name=Martin%20Smith&numTimes=5
 
         Otherwise, this error:
         InvalidOperationException: The view 'Info' was not found. The following locations were searched:
-        > /Views/Hello/Greetings.cshtml
-        > /Views/Shared/Greetings.cshtml
+        > /Views/Hello/Greeting.cshtml
+        > /Views/Shared/Greeting.cshtml
+
+
+        IMPORTANT NOTE:
+        ***************
+        Remember that the view template generates a dynamic response, 
+        which means that appropriate data must be passed from the controller to the view to generate the response.
+        Do this by having the controller put the dynamic data (parameters) that the view template needs in a ViewData dictionary.
+        The view template can then access the dynamic data.
         */
 
-        public IActionResult Greetings(string name, int numTimes = 1)
+        public IActionResult Greeting(string name, int numTimes = 1)
         {
             /*
             ViewComponent.ViewData Property
@@ -65,8 +82,12 @@ namespace MovieMVC.Controllers
 
             we need to add these extra parameters to the ViewData dictionary list
 
-            NOTE TO RECAP:
-            Remember that ViewData[] is the list the connect the custom values/content 
+            NOTES TO RECAP:
+            **************
+            Remember that The "ViewData" dictionary is a dynamic object, which means any type can be used. 
+            The ViewData object has no defined properties until something is added
+            
+            so ViewData[] is the list that contains custom values/content 
             that we add in the "_layout.cshtml" in the "Shared" folder
             with any .schtml page in the "Views" folder
             
@@ -77,7 +98,7 @@ namespace MovieMVC.Controllers
             > ViewData["Greeting"]
             > ViewData["Count"]
             will be passed to the view page
-            "you can think like using $_SESSION[] in PHP :-)"
+            "you can think it's like using $_SESSION[] in PHP :-)"
             */
             ViewData["Greeting"] = "Hello " + name; // name will be empty by default
             ViewData["Count"] = numTimes; // will have the value of 1 by default
@@ -88,7 +109,7 @@ namespace MovieMVC.Controllers
         }
 
         /*
-        The method below "Actor()" to be explained after the "Greetings" method and view.
+        The method below "Actor()" to be explained after the "Greeting" method and view.
         Please refer to the topic: 
         Adding a control to represent the view page for the Database contents 
         In my PDF file in the "Weekly Learning" :-)

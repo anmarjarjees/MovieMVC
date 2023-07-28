@@ -23,8 +23,9 @@
     @{
         /*
         IMPORTANT NOTE:
+        ***************
         ViewData[] => represents a dictionary for view data, it's not an integer value
-        so we cannot use it as it is in our loop condition,
+        so we CANNOT use it as it is in our loop condition,
         we need to cast it to int:
         - Notice the code is simply written as:
         the loop condition => i <(int)ViewData["Count"])

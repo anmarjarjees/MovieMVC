@@ -1,8 +1,16 @@
 ﻿@* Yes I am a comment in razor page :-) *@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-    Replace the contents of the Views/HelloWorld/Index.cshtml Razor view file with the following:
 *@
+
+<!-- 
+Replace the default contents of the Views:
+    @{
+    
+    }
+
+the following: 
+-->
 
 @* 
     Below is the razor code (C# code) 
@@ -13,8 +21,12 @@
     The information can be changed from the layout 
 *@
 
+
 @{
-    ViewData["Title"] = "Index";
+    /*
+    Settting the "Title" property of the "ViewData" dictionary to "Movie List":
+    */
+    ViewData["Title"] = "Movie List";
 }
 
 @* below is our normal HMLT contents: *@

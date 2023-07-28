@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @* Change below: Movie ASP.NET MVC App *@
+    @* Change title below: Movie ASP.NET MVC App *@
     <title>@ViewData["Title"] - Movie ASP.NET MVC App</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -26,7 +26,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            @* asp-action => for calling the view/controller method*@
+                            @* asp-action => for calling the view/controller method to render the required .cshtml page *@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>                
                         <li class="nav-item">
@@ -35,11 +35,12 @@
                         @* 
                         Copy the same code from the above li to add our new nav list item:
                         asp-controller => for calling our Controller .cs file (c# class)
+                        
+                        The "asp-controller" with it's value will be auto generated when adding our controller
                         remember our new/main controller is named "Hello":
                         asp-controller="Hello"
                         
-                        Notice that with MS-Documents MVC Tutorials is named "HelloWorld"
-                       
+                        Don't forget that with MS-Documents MVC Tutorials is named "HelloWorld"                       
                         *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Hello" asp-action="Index">Hello</a>
@@ -67,6 +68,12 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <!-- 
+                RenderBody() is a placeholder where all the view-specific pages you create show up, 
+                wrapped in the layout page.
+
+                so the view (content of each page) is rendered inside the RenderBody method.
+            -->
             @RenderBody()
         </main>
     </div>
